@@ -2,11 +2,7 @@ require_relative '../../app.rb'
 
 feature 'View hit points' do
   scenario 'see Player 2 hit points' do
-    visit('/')
-    fill_in :player_1_name, with: 'Arthur'
-    fill_in :player_2_name, with: 'Amy'
-    click_button "Start fight!"
-
+    sign_in_and_play
     expect(page).to have_content 'Amy: 50HP'
   end
 end
