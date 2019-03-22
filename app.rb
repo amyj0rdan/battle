@@ -25,7 +25,8 @@ class Battle < Sinatra::Base
     erb :play
   end
 
-  get '/attack' do
+  post '/attack' do
+    @attack_method = params[:name]
     @game.attack(@game.other_player)
     if @game.other_player.hp <= 0
       redirect '/loser'

@@ -7,8 +7,13 @@
 </div>
 
 <div>
-  <form action='/attack'>
+  <form action='/attack' method="post">
+    <input name="name" value="hit" type="hidden">
     <input type='submit' value='Attack'>
+  </form>
+  <form action='/attack' method="post">
+    <input name="name" value="frying-panned" type="hidden">
+    <input type="submit" value="Whack with frying pan">
   </form>
 </div>
 
