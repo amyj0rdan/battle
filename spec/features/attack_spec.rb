@@ -10,7 +10,7 @@ feature 'Attack Player 2' do
   end
 end
 
-xfeature 'Attack Player 1' do
+feature 'Attack Player 1' do
   context "if it is player 2's turn" do
     scenario 'player 2 can attack and get confirmation' do
       sign_in_and_play
