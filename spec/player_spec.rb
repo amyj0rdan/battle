@@ -13,7 +13,8 @@ describe Player do
     expect(amy.hp).to eq described_class::DEFAULT_HP
   end
 
-  it 'receive_damage and reduces points by 10' do
-    expect{amy.receive_damage}.to change{amy.hp}.by(-10)
+  it 'receive_damage and reduces points by random number' do
+    allow(Kernel).to receive(:rand).and_return(7)
+    expect{amy.receive_damage}.to change{amy.hp}.by(-7)
   end
 end

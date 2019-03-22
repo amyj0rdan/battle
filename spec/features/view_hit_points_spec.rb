@@ -14,17 +14,19 @@ end
 
 feature 'reduce hit points when attacked' do
   scenario 'attack Player 2 and reduce hit points' do
+    allow(Kernel).to receive(:rand).and_return(8)
     sign_in_and_play
     attack_and_return
     expect(page).not_to have_content 'Amy: 50HP'
-    expect(page).to have_content 'Amy: 40HP'
+    expect(page).to have_content 'Amy: 42HP'
   end
 
   scenario 'attack Player 1 and reduce hit points' do
+    allow(Kernel).to receive(:rand).and_return(6)
     sign_in_and_play
     attack_and_return
     attack_and_return
     expect(page).not_to have_content 'Arthur: 50HP'
-    expect(page).to have_content 'Arthur: 40HP'
+    expect(page).to have_content 'Arthur: 44HP'
   end
 end
