@@ -2,6 +2,14 @@ class Game
 
   attr_reader :current_player
 
+  def self.create_game(player1, player2)
+    @game = self.new(player1, player2)
+  end
+
+  def self.get
+    @game
+  end
+
   def initialize(player_1, player_2)
     @players = [player_1, player_2]
     @current_player = player_1
