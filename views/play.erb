@@ -2,6 +2,7 @@
 <h2><%= @game.player_1.name %> v <%= @game.player_2.name %></h2>
 
 <div>
+  <%= @game.player_1.name %>: <%= @game.player_1.hp %>HP
   <%= @game.player_2.name %>: <%= @game.player_2.hp %>HP
 </div>
 
@@ -11,4 +12,4 @@
   </form>
 </div>
 
-<%= @game.turn.name %>'s turn
+<%= @game.current_player.name %>'s turn

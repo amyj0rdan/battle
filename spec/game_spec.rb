@@ -19,16 +19,31 @@ describe Game do
     expect(game.player_2).to eq(player_2)
   end
 
-  describe '#turn' do
+  describe '#current_player' do
     it 'starts as player 1' do
-      expect(game.turn).to eq player_1
+      expect(game.current_player).to eq player_1
     end
   end
 
   describe '#switch_turns' do
     it 'switches the turn' do
       game.switch_turn
-      expect(game.turn).to eq player_2
+      expect(game.current_player).to eq player_2
+    end
+  end
+
+  describe '#other_player' do
+    context '#current_player is Player 1' do
+      it 'gives Player 2' do
+        expect(game.other_player).to eq player_2
+      end
+    end
+
+    context '#current_player is Player 2' do
+      it 'gives Player 1' do
+        game.switch_turn
+        expect(game.other_player).to eq player_1
+      end
     end
   end
 end
