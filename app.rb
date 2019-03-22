@@ -28,10 +28,13 @@ class Battle < Sinatra::Base
     if @game.other_player.hp == 0
       redirect '/loser'
     else
-      output = erb :attack
-      @game.switch_turn
-      output
+      erb :attack
     end
+  end
+
+  post '/switch_turns' do
+    $game.switch_turn
+    redirect('/play')
   end
 
   get '/loser' do

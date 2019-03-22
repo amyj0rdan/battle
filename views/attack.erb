@@ -1,4 +1,4 @@
 <%= @game.current_player.name %> hit <%= @game.other_player.name %>!
-<form action="/play">
+<form action="/switch_turns" method='post'>
   <input type="submit" value="Ouch!">
 </form>
