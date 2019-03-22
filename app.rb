@@ -25,9 +25,18 @@ class Battle < Sinatra::Base
   get '/attack' do
     @game = $game
     @game.attack(@game.other_player)
-    output = erb :attack
-    @game.switch_turn
-    output
+    if @game.other_player.hp == 0
+      redirect '/loser'
+    else
+      output = erb :attack
+      @game.switch_turn
+      output
+    end
+  end
+
+  get '/loser' do
+    @game = $game
+    erb :loser
   end
 
   run! if app_file == $0
