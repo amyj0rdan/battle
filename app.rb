@@ -6,6 +6,10 @@ class Battle < Sinatra::Base
 
   enable :sessions
 
+  before do
+    @game = Game.get
+  end
+
   get '/' do
     erb(:index)
   end
@@ -18,12 +22,10 @@ class Battle < Sinatra::Base
   end
 
   get '/play' do
-    @game = Game.get
     erb :play
   end
 
   get '/attack' do
-    @game = Game.get
     @game.attack(@game.other_player)
     if @game.other_player.hp <= 0
       redirect '/loser'
@@ -33,13 +35,11 @@ class Battle < Sinatra::Base
   end
 
   post '/switch_turns' do
-    @game = Game.get
     @game.switch_turn
     redirect('/play')
   end
 
   get '/loser' do
-    @game = Game.get
     erb :loser
   end
 
